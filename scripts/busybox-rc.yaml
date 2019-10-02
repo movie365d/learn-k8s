@@ -1,9 +1,21 @@
 apiVersion: v1
 kind: ReplicationController
-metadata:
-  name: busybox-rc
+metadata: 
+    name: busybox-rc
 spec:
-  replicas: 3
-  selector:
-    app: busybox
-    
+    replicas: 2
+    selector:
+        app: busybox-rc-pod
+    template:
+        metadata:
+            name: busybox-rc-pod
+            labels:
+                app: busybox-rc-pod
+        spec:
+            containers:
+                - name: busybox-rc-pod
+                  image: busybox:1.28
+                  command:
+                    - sleep
+                    - "120"
+

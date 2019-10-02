@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+    name: busybox-dp
+    labels:
+        app: busybox-dp
+spec:
+    replicas: 2
+    selector:
+        matchLabel:
+            app: busybox-dp-pod
+    template:
+        metadata:
+            name: busybox-dp-pod
+            labels:
+                app: busybox-dp-pod
+        spec:
+            containers:
+                - name: busybox-dp-pod
+                  image: busybox:1.28
+                  command: 
+                    - "sleep"
+                    - "3600"
