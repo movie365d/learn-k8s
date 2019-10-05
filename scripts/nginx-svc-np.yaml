@@ -5,7 +5,7 @@ metadata:
     labels:
         app: nginx-svc-np
 spec:
-    selectors:
+    selector:
         app: nginx-app
     type: NodePort
     ports:
